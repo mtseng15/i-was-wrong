@@ -1,5 +1,6 @@
 ; Micah Tseng
 
+
 		AREA FUNCTION_CALLS, CODE, READONLY
 		ENTRY	
 		
@@ -11,7 +12,7 @@
 		ADR R9, r
 		
 go		CMP R4, R5
-		BGT done
+		BGE done
 		LDR R0, [R6, R4, LSL #2]
 		LDR R1, [R7, R4, LSL #2]
 		ADD R2, R8, R4, LSL #2
@@ -28,8 +29,7 @@ divide	CMP R1, #0
 		CMP R0, #0			; compare n to 0
 		RSBLT R0, R0, #0	; If, n < 0, abs(n)
 		PUSH {R4, R5}
-		; R4 = *q, R5 = *r
-		MOV R4, #0		; *q = 0
+		MOV R4, #0		; *q = 0  		R4 = *q, R5 = *r
 		MOV R5, R0		; *r = n
 while 	
 		CMP R5, R1		; Compare *r and d
